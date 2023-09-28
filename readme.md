@@ -11,9 +11,19 @@ This repo provides code to visualise basic traffic and requests stats on APHA's 
 ## Running
 
 1. Ensure that all stats files for each day you wish to visualise are downloaded to a single local directory. These files are `.json` format and saved on the ViewBovis server at `/var/log/viewbovis/` with a naming convention like: `viewbovis_requests_yyyy-mm-dd.json`, you will need to copy these to your dev machine.
-1. To run the jupyter notebook:
+1. In `visualise.ipynb`, update the variables `stats_dir`, `start_date` and `end_date` below to the location of where you have the stats, the start and end dates you wish to plot from and to respectively. Leaving `start_date` and `end_date` as `None` will plot the all dates that you have downloaded.
+
+
+```python
+# set these values
+stats_dir = "/home/nickpestell/tmp/viewbovis_stats/"
+start_date = None
+end_date = None
 ```
-jupyter nbconvert --execute visualise.ipynb --to markdown --output <your-file-name>
+
+3. To run the jupyter notebook:
+```
+jupyter nbconvert --execute visualise.ipynb --to markdown --output <your-outfile-name>
 ```
 This will create a markdown that looks much the same as this `readme.md`
 
@@ -29,15 +39,11 @@ There are five suplots:
 1. "/sample/matrix" - SNP matrix requests
 1. "/charon/getDataset" - Nextstrain searches
 
+# Code
 
 
 ```python
 import utils
-```
-
-
-```python
-stats_dir = "/home/nickpestell/tmp/viewbovis_stats/"
 ```
 
 
@@ -62,6 +68,6 @@ for ax in axs:
 
 
     
-![png](readme_files/readme_4_0.png)
+![png](readme_files/readme_6_0.png)
     
 
